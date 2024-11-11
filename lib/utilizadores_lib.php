@@ -2,7 +2,15 @@
 
 function validaUtilizador(string $username, string $password): array|bool
 {
-    $futilizadores = fopen("utilizadores.txt", "r");
+    // abrir o ficheiro no directorio superior ../data
+    $futilizadores = fopen(
+            ".."
+            . DIRECTORY_SEPARATOR
+            . "data"
+            . DIRECTORY_SEPARATOR
+            . "utilizadores.txt",
+        "r"
+    );
     while(($linha = fgets($futilizadores)) !== false) {
         $utilizador = explode(",", $linha);
 
