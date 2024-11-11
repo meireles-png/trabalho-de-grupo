@@ -2,11 +2,9 @@
 
 function validaUtilizador(string $username, string $password): array|bool
 {
-    // abrir o ficheiro no directorio superior ../data
+    // abrir o ficheiro no directorio superior data/utilizadores
     $futilizadores = fopen(
-            ".."
-            . DIRECTORY_SEPARATOR
-            . "data"
+            "data"
             . DIRECTORY_SEPARATOR
             . "utilizadores.txt",
         "r"
