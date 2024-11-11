@@ -1,5 +1,5 @@
 <?php
-    include_once 'lib/utilizadores_lib.php';
+    include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';
 
     if (!empty($_POST)) {
         if (($utilizador = validaUtilizador($_POST['email'], $_POST['password'])) !== false){
