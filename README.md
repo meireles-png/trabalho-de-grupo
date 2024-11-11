@@ -7,8 +7,9 @@ remover, modificar tarefas, com autenticação.
 
 ### TODO
 
- - [X] Gestão de Utilizadores
+ - [ ] Gestão de Utilizadores
  - [ ] Login
+    - [X] Form de Login
  - [ ] Logout
  - [ ] Página Home
  - [ ] Criar Tarefas
