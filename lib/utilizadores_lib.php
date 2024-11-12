@@ -36,10 +36,13 @@ function validaSessao(): bool
     return true;
 }
 
-function terminaSessao(): void
+function terminaSessao(): bool
 {
-    validaSessao();
+    if (!validaSessao()) {
+        return true;
+    } 
+
     $_SESSION = [];
     session_destroy();
-    header('Location: login.php');
+    return true;
 }

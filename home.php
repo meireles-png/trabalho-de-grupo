@@ -7,9 +7,9 @@
     }
 ?>
 
-<?php include_once 'partials/header.php'; ?>
-<?php include_once 'partials/menu.php'; ?>
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
 
 lista de tarefas
 
-<?php include_once 'partials/footer.php'; ?>
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
