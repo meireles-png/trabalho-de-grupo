@@ -14,6 +14,8 @@ function validaUtilizador(string $username, string $password): array|bool
 
         if ($username == $utilizador[0]) {
             if (password_verify($password, $utilizador[1])) {
+                session_start();
+                $_SESSION['nome'] = $utilizador[2];
                 return $utilizador;
             } else {
                 return false;
@@ -24,14 +26,14 @@ function validaUtilizador(string $username, string $password): array|bool
     return false;
 }
 
-function validaSessao(): void
+function validaSessao(): bool
 {
     session_start();
-    if (empty($_SESSION)) {
-        echo "Não podes estar aqui sem iniciar uma sessão<br>";
-        echo '<a href="login.php">Inciar Sessão</a>';
-        exit;
+    if (empty($_SESSION) || empty($_SESSION['nome'])) {
+        return false;
     }
+
+    return true;
 }
 
 function terminaSessao(): void

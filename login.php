@@ -3,24 +3,15 @@
 
     if (!empty($_POST)) {
         if (($utilizador = validaUtilizador($_POST['email'], $_POST['password'])) !== false){
-            session_start();
-            $_SESSION['nome'] = $utilizador[2];
             header('Location: home.php');
         } else {
             $message = "Utilizador ou palavra-passe errada";
         }
     } 
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tarefas++</title>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
-    <body>
+<?php include_once 'partials/header.php'; ?>
+
         <div class="row mt-5">
             <div class="col">
                 <h1 class="text-center">Tarefas++</h1>
@@ -60,6 +51,5 @@
                 </div>
             </div>
         </form>
-    </body>
-    </html>
-    
+
+<?php include_once 'partials/footer.php'; ?>
