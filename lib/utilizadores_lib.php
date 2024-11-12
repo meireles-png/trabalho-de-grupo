@@ -3,12 +3,9 @@
 function validaUtilizador(string $username, string $password): array|bool
 {
     // abrir o ficheiro no directorio superior data/utilizadores
-    $futilizadores = fopen(
-            "data"
-            . DIRECTORY_SEPARATOR
-            . "utilizadores.txt",
-        "r"
-    );
+
+    $futilizadores = fopen('data' . DIRECTORY_SEPARATOR . 'utilizadores.txt', 'r');
+
     while(($linha = fgets($futilizadores)) !== false) {
         $utilizador = explode(",", $linha);
 

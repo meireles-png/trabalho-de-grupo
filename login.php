@@ -10,7 +10,7 @@
     } 
 ?>
 
-<?php include_once 'partials/header.php'; ?>
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
 
         <div class="row mt-5">
             <div class="col">
@@ -52,4 +52,4 @@
             </div>
         </form>
 
-<?php include_once 'partials/footer.php'; ?>
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
