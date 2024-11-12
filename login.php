@@ -3,22 +3,20 @@
 
     if (!empty($_POST)) {
         if (($utilizador = validaUtilizador($_POST['email'], $_POST['password'])) !== false){
-            // já sei que o utilizador deu credenciais certas
             session_start();
             $_SESSION['nome'] = $utilizador[2];
-            header('Location: index.php');
+            header('Location: home.php');
         } else {
-            echo "Utilizador ou palavra-passe errada"; 
+            $message = "Utilizador ou palavra-passe errada";
         }
-    } else {
+    } 
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Banco Universal</title>
+        <title>Tarefas++</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
@@ -32,6 +30,14 @@
                 </p>
             </div>
         </div>
+
+        <?php if (!empty($message)) { ?> 
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <p class="alert alert-danger"><?php echo $message;?></p>
+                </div>
+            </div>
+        <?php } ?>
 
         <form action="login.php" method="post" class="">
             <div class="row justify-content-center mt-3">
@@ -56,7 +62,4 @@
         </form>
     </body>
     </html>
-    <?php
-    }
-
-    ?>
+    
