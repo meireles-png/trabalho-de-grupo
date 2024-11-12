@@ -14,8 +14,8 @@
 
         <div class="row mt-5">
             <div class="col">
-                <h1 class="text-center">Tarefas++</h1>
-                <p class="lead text-center mt-2">O seu organizador para mais tarefas e mais produtividade.</p>
+                <h1 class="text-center">PHP Sócios</h1>
+                <p class="lead text-center mt-2">A melhor gestão de sócios do mercado.</p>
                 <p class="text-center">
                     <img src="assets/img/icon.png" alt="" style="height: 50px">
                 </p>
