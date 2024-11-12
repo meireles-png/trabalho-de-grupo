@@ -15,4 +15,3 @@ lista de tarefas
 
 <?php include_once 'partials/footer.php'; ?>
 
-.gitignore
