@@ -17,7 +17,7 @@
                 <h1 class="text-center">PHP Sócios</h1>
                 <p class="lead text-center mt-2">A melhor gestão de sócios do mercado.</p>
                 <p class="text-center">
-                    <img src="assets/img/icon.png" alt="" style="height: 50px">
+                    <i class="fa-solid fa-list-check"></i>
                 </p>
             </div>
         </div>
