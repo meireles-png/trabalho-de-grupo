@@ -1,1 +1,3 @@
 Jose,$2y$10$GlAyOuU39VejggjxeK6Miu1FMBBSSjAiZ.c7tKZNVzYUo1d7xFkQe,Jose melo
+maria,$2y$10$.Y1LfiS2W8Mx0UAoOVRM6OJmS0QSynv/5vrRoF9fhcXhmTlvekhRy,maria loures
+mario,$2y$10$JXbevDL2ngm22RIJdRSlEuULxZ37nJGWIs7wD7R7SHXMeTbegUvBO,mario jose
