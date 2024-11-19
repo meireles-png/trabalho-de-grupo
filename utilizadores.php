@@ -7,8 +7,8 @@
     }
 ?>
 
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
 
 <div class="container mt-3">
     <div class="row">
@@ -40,13 +40,13 @@
                         $utilizadores = lerUtilizadores();
                         foreach ($utilizadores as $utilizador) { ?>
                             <tr>
-                                <td><?php echo $utilizador[2];?></td>
-                                <td><?php echo $utilizador[0];?></td>
+                                <td><?php echo $utilizador['nome'];?></td>
+                                <td><?php echo $utilizador['username'];?></td>
                                 <td class="text-end">
-                                    <a href="ver_utilizador.php?username=<?php echo $utilizador[0];?>" class="btn btn-secondary">
+                                    <a href="ver_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-secondary">
                                         <i class="fa-solid fa-info fa-fw"></i>
                                     </a>
-                                    <a href="modificar_utilizador.php?username=<?php echo $utilizador[0];?>" class="btn btn-warning">
+                                    <a href="modificar_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-warning">
                                         <i class="fa-solid fa-user-pen fa-fw"></i>
                                     </a>
                                 </td>
@@ -59,4 +59,4 @@
     </div>
 </div>
 
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

@@ -2,6 +2,7 @@
 
 function lerUtilizadores(): array
 {
+    // abrir o ficheiro no directorio superior data/utilizadores
     $futilizadores = fopen(
             "data"
             . DIRECTORY_SEPARATOR
@@ -11,9 +12,15 @@ function lerUtilizadores(): array
 
     $utilizadores = [];
     while(($linha = fgets($futilizadores)) !== false) {
-        $utilizadores[] = explode(",", $linha);
-    }
+        $tempUtilizador = explode(",", $linha);
 
+        $utilizadores[] = [
+            'nome' => trim($tempUtilizador[2]),
+            'username' => $tempUtilizador[0],
+            'password' => $tempUtilizador[1],
+        ];
+    }
+    fclose($futilizadores);
     return $utilizadores;
 }
 
@@ -23,10 +30,10 @@ function validaUtilizador(string $username, string $password): array|bool
     $utilizadores = lerUtilizadores();
     
     foreach ($utilizadores as $utilizador) {
-        if ($username == $utilizador[0]) {
-            if (password_verify($password, $utilizador[1])) {
+        if ($username == $utilizador['username']) {
+            if (password_verify($password, $utilizador['password'])) {
                 @session_start();
-                $_SESSION['nome'] = $utilizador[2];
+                $_SESSION['nome'] = $utilizador['nome'];
                 setcookie('tarefaslogin', json_encode([
                     'utilizador' => $username,
                     'password' => $password,
@@ -36,8 +43,8 @@ function validaUtilizador(string $username, string $password): array|bool
                 return false;
             }
         }
-    
     }
+
     return false;
 }
 
@@ -70,8 +77,23 @@ function terminaSessao(): bool
     return true;
 }
 
+function obtemUtilizador(string $username): array|bool
+{
+    $utilizadores = lerUtilizadores();
+    foreach ($utilizadores as $utilizador) {
+        if ($utilizador['username'] == $username) {
+            return $utilizador;
+        }
+    }
+    return false;
+}
+
 function adicionarUtilizador(string $username, string $nome, string $password): array|bool
 {
+    if (obtemUtilizador($username) === false) {
+        return false;
+    }
+
     $futilizadores = fopen(
         "data"
             . DIRECTORY_SEPARATOR
@@ -91,4 +113,45 @@ function adicionarUtilizador(string $username, string $nome, string $password): 
         password_hash($password, PASSWORD_DEFAULT),
         $nome
     ];
+}
+
+function modificarUtilizador(string $username, string $nome, string $password): bool
+{
+    $utilizadores = lerUtilizadores();
+    foreach ($utilizadores as $pos => $utilizador) {
+        if ($utilizador['username'] == $username) {
+            $utilizadores[$pos]['nome'] = $nome;
+            if ($password != '') {
+                $utilizadores[$pos]['password'] = password_hash($password, PASSWORD_DEFAULT);
+            }
+
+            escreverUtilizadores($utilizadores);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function escreverUtilizadores(array $utilizadores): bool
+{
+    // abrir o ficheiro no directorio superior data/utilizadores
+    $futilizadores = fopen(
+            "data"
+            . DIRECTORY_SEPARATOR
+            . "utilizadores.txt",
+        "w"
+    );
+
+    foreach($utilizadores as $utilizador) {
+        fputs(
+            $futilizadores,
+            $utilizador['username'] . ','
+            . $utilizador['password'] . ','
+            . $utilizador['nome'] . "\n"
+        );
+    }
+
+    fclose($futilizadores);
+    return true;
 }
