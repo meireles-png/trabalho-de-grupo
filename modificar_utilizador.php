@@ -26,8 +26,8 @@
     }
 ?>
 
-<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
-<?php include_once 'partials' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
 
 <div class="container mt-3">
     <div class="row">
