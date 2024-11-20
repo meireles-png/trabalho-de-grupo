@@ -14,7 +14,7 @@
 
         <div class="row mt-5">
             <div class="col">
-                <h1 class="text-center">PHP Sócios</h1>
+                <h1 class="text-center">GestaDAW</h1>
                 <p class="lead text-center mt-2">A melhor gestão de sócios do mercado.</p>
                 <p class="text-center">
                     <i class="fa-solid fa-list-check"></i>
