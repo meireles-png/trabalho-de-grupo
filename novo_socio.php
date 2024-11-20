@@ -7,7 +7,7 @@
     }
 
     if (!empty($_POST)) {
-        $ret = adicionarUtilizador($_POST['username'], $_POST['name'], $_POST['password']);
+        $ret = adicionarUtilizador($_POST['nif'], $_POST['nome']);
         if ($ret === false) {
             $message = 'Não foi possivel adicionar o utilizador';
             $class = "danger";
@@ -21,7 +21,7 @@
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
 
-<form action="novo_utilizador.php" method="post" class="">
+<form action="novo_socio.php" method="post" class="">
         
         <div class="row justify-content-center mt-3">
             <label for="nome" class="col-2 text-end fw-bold">Nome de Sócio</label>

@@ -4,7 +4,7 @@ function lerUtilizadores(): array
 {
     // abrir o ficheiro no directorio superior data/utilizadores
     $futilizadores = fopen(
-            "data"
+        "data"
             . DIRECTORY_SEPARATOR
             . "utilizadores.txt",
         "r"
@@ -135,7 +135,6 @@ function modificarUtilizador(string $username, string $nome, string $password): 
 
 function escreverUtilizadores(array $utilizadores): bool
 {
-    // abrir o ficheiro no directorio superior data/utilizadores
     $futilizadores = fopen(
             "data"
             . DIRECTORY_SEPARATOR
@@ -154,4 +153,48 @@ function escreverUtilizadores(array $utilizadores): bool
 
     fclose($futilizadores);
     return true;
+}
+
+function lerSocio(): array
+{
+    $fsocios = fopen(
+        "data" 
+            . DIRECTORY_SEPARATOR 
+            . "socios.txt",
+        "r"
+    );
+
+    $socios = [];
+    while (($linha = fgets($fsocios)) !== false) {
+        $tempSocio = explode(";", $linha);
+
+        $socios[] = [
+            'nif' => trim($tempSocio[2]),
+            'nome' => trim($tempSocio[1]),
+        ];
+    }
+    fclose($fsocios);
+    return $socios;
+}
+
+function nifUnico(string $nif): bool
+{
+    $socios = lerSocios();
+    foreach ($socios as $socio) {
+        if ($socio['nif'] === $nif) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function obtemSocio(string $nif): array|bool
+{
+    $socios = lerSocios();
+    foreach ($socios as $socio) {
+        if ($socio['nif'] === $nif) {
+            return $socio;
+        }
+    }
+    return false;
 }
