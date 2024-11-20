@@ -32,7 +32,7 @@
 
         <form action="login.php" method="post" class="">
             <div class="row justify-content-center mt-3">
-                <label for="" class="col-2 text-end fw-bold">Email</label>
+                <label for="" class="col-2 text-end fw-bold">ID</label>
                 <div class="col-4">
                     <input type="text" name="email" id="">
                 </div>

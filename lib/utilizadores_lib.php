@@ -34,7 +34,7 @@ function validaUtilizador(string $username, string $password): array|bool
             if (password_verify($password, $utilizador['password'])) {
                 @session_start();
                 $_SESSION['nome'] = $utilizador['nome'];
-                setcookie('tarefaslogin', json_encode([
+                setcookie('gestaologin', json_encode([
                     'utilizador' => $username,
                     'password' => $password,
                 ]), time()+ 60);
@@ -52,8 +52,8 @@ function validaSessao(): bool
 {
     @session_start();
     if (empty($_SESSION) || empty($_SESSION['nome'])) {
-        if (isset($_COOKIE['tarefaslogin'])) {
-            $dadosCookie = json_decode($_COOKIE['tarefaslogin'], true);
+        if (isset($_COOKIE['gestaologin'])) {
+            $dadosCookie = json_decode($_COOKIE['gestaologin'], true);
             $utilizador = validaUtilizador($dadosCookie['utilizador'], $dadosCookie['password']);
             return is_array($utilizador) ? true : $utilizador;
         } else {
@@ -70,7 +70,7 @@ function terminaSessao(): bool
         return true;
     }
 
-    setcookie('tarefaslogin', '', time()-1);
+    setcookie('gestaologin', '', time()-1);
 
     $_SESSION = [];
     session_destroy();
@@ -90,7 +90,7 @@ function obtemUtilizador(string $username): array|bool
 
 function adicionarUtilizador(string $username, string $nome, string $password): array|bool
 {
-    if (obtemUtilizador($username) === false) {
+    if (obtemUtilizador($username) !== false) {
         return false;
     }
 

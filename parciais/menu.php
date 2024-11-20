@@ -13,6 +13,9 @@
           <a class="nav-link" href="utilizadores.php">Utilizadores</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="socios.php">Sócios</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="logout.php">Terminar Sessão</a>
         </li>
       </ul>

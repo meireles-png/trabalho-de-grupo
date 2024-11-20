@@ -13,14 +13,14 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col">
-            <h1>Utilizadores</h1>
+            <h1>Sócios</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col text-end">
-            <a href="novo_utilizador.php" class="btn btn-primary">
-                <i class="fa-solid fa-user-plus me-1"></i>Registar Utilizador
+            <a href="novo_socio.php" class="btn btn-primary">
+                <i class="fa-solid fa-user-plus me-1"></i>Registar Sócios
             </a>
         </div>
     </div>
