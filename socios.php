@@ -37,16 +37,16 @@
                 </thead>
                 <tbody>
                     <?php
-                        $utilizadores = lerUtilizadores();
-                        foreach ($utilizadores as $utilizador) { ?>
+                        $socios = lerSocio();
+                        foreach ($socios as $socio) { ?>
                             <tr>
-                                <td><?php echo $utilizador['nome'];?></td>
-                                <td><?php echo $utilizador['username'];?></td>
+                                <td><?php echo $socio['nif'];?></td>
+                                <td><?php echo $socio['nome'];?></td>
                                 <td class="text-end">
-                                    <a href="ver_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-secondary">
+                                    <a href="ver_socio.php?nome=<?php echo $socio['nome'];?>" class="btn btn-secondary">
                                         <i class="fa-solid fa-info fa-fw"></i>
                                     </a>
-                                    <a href="modificar_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-warning">
+                                    <a href="modificar_socio.php?nome=<?php echo $socio['nome'];?>" class="btn btn-warning">
                                         <i class="fa-solid fa-user-pen fa-fw"></i>
                                     </a>
                                 </td>
