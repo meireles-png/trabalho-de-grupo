@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $socio['nome'];?></h5>
                     <p class="text-center">
-                    <a href="modificar_socio.php?username=<?php echo $socio['username'];?>" class="btn btn-primary">Modificar</a>
+                    <a href="modificar_socio.php?id=<?php echo $socio['nome'];?>" class="btn btn-primary">Modificar</a>
                     </p>
                 </div>
             </div>
