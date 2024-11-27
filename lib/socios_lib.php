@@ -21,7 +21,7 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
         $socio = [
             'id' => trim($tempSocios[0]),
             'nome' => trim($tempSocios[2]),
-            'NIF' => trim($tempSocios[1]),
+            'nif' => trim($tempSocios[1]),
             'data_criacao' => trim($tempSocios[3]),
             'estado' => trim($tempSocios[4]),
         ];
@@ -87,10 +87,12 @@ function sanitizar(string $string, bool $reverter = false): string
     return $string;
 }
 
-function adicionarSocio(string $nome, string $nif): array|bool
+function adicionarSocio(string $nome, string $nif, string $estado): array|bool
 {
     $id = obtemProximoId();
     
+    $estado = atividadeSocio();
+
     $fsocios = fopen(
         "data"
             . DIRECTORY_SEPARATOR
@@ -102,7 +104,7 @@ function adicionarSocio(string $nome, string $nif): array|bool
         $id,
         sanitizar($nome),
         sanitizar($nif),
-        sanitizar($estado),
+        $estado,
         date('Y-m-d H:i:s'),
         ''
     ];
@@ -137,4 +139,20 @@ function obtemSocio(string $nome): array|bool
         }
     }
     return false;
+}
+
+function atividadeSocio() {
+    if (!isset($_SESSION['estado'])) {
+        $_SESSION['estado'] = 'ATIVO';
+    }
+
+    if (isset($_SESSION['ultima_atividade'])) {
+        $tempo_inativo = time() - $_SESSION['ultima_atividade'];
+
+        if ($tempo_inativo > 300) {
+            $_SESSION['estado'] = 'SUSPENSO';
+        }
+    }
+
+    $_SESSION['ultima_atividade'] = time();
 }

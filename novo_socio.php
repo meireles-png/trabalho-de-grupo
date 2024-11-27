@@ -8,7 +8,7 @@
     }
 
     if (!empty($_POST)) {
-        $socio = adicionarSocio($_POST['nif'], $_POST['nome']);
+        $socio = adicionarSocio($_POST['nif'], $_POST['nome'], $_POST['estado']);
         if ($socio === false) {
             $message = 'Não foi possivel adicionar o sócio';
             $class = "danger";
