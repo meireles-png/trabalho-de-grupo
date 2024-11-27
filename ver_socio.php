@@ -13,11 +13,11 @@
 
 <div class="container pt-5">
     <?php
-        $socio = obtemsocio($_GET['username']);
+        $socio = obtemSocio($_GET['nome']);
         if ($socio === false) { ?>
             <div class="row">
                 <div class="col">
-                    <p class="alert alert-danger">Sócio não encontrado!!!</p>
+                    <p class="alert alert-danger">Sócio não encontrado!</p>
                 </div>
             </div>
         <?php } else { ?> 

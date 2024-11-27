@@ -8,12 +8,12 @@
     }
 
     if (!empty($_POST)) {
-        $ret = adicionarUtilizador($_POST['nif'], $_POST['nome']);
-        if ($ret === false) {
-            $message = 'Não foi possivel adicionar o utilizador';
+        $socio = adicionarSocio($_POST['nif'], $_POST['nome']);
+        if ($socio === false) {
+            $message = 'Não foi possivel adicionar o sócio';
             $class = "danger";
         } else {
-            $message = "Utilizador adicionado com sucesso";
+            $message = "Sócio adicionado com sucesso";
             $class = "success";
         }
     }
@@ -22,8 +22,23 @@
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
 
-<form action="novo_socio.php" method="post" class="">
-        
+<div>
+
+    <div class="row">
+        <div class="col">
+            <h1>Adicionar Sócio</h1>
+        </div>
+    </div>
+
+    <?php if (!empty($message)) { ?> 
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <p class="alert alert-<?php echo $class;?>"><?php echo $message;?></p>
+            </div>
+        </div>
+    <?php } ?>
+
+    <form action="novo_socio.php" method="post" class="">
         <div class="row justify-content-center mt-3">
             <label for="nome" class="col-2 text-end fw-bold">Nome de Sócio</label>
             <div class="col-4">

@@ -20,15 +20,10 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
 
         $socio = [
             'id' => trim($tempSocios[0]),
-            'nome' => trim($tempSocios[1]),
-            'NIF' => trim($tempSocios[2]),
-            'data_nascimento' => trim($tempSocios[3]),
-            'morada' => trim($tempSocios[4]),
-            'codigo_postal' => trim($tempSocios[5]),
-            'localidade' => trim($tempSocios[6]),
-            'email' => trim($tempSocios[7]),
-            'sexo' => trim($tempSocios[8]),
-            'situação' => trim($tempSocios[9]),
+            'nome' => trim($tempSocios[2]),
+            'NIF' => trim($tempSocios[1]),
+            'data_criacao' => trim($tempSocios[3]),
+            'estado' => trim($tempSocios[4]),
         ];
 
         if (!empty($pesquisa) && (strpos($socio['nome'], $pesquisa) === false)) {
@@ -107,7 +102,7 @@ function adicionarSocio(string $nome, string $nif): array|bool
         $id,
         sanitizar($nome),
         sanitizar($nif),
-        1,
+        sanitizar($estado),
         date('Y-m-d H:i:s'),
         ''
     ];
@@ -120,4 +115,26 @@ function adicionarSocio(string $nome, string $nif): array|bool
     }
 
     return $socio;
+}
+
+function nifUnico(string $nif): bool
+{
+    $socios = lerSocios();
+    foreach ($socios as $socio) {
+        if ($socio['nif'] === $nif) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function obtemSocio(string $nome): array|bool
+{
+    $socios = lerSocios();
+    foreach ($socios as $socio) {
+        if ($socio['nome'] === $nome) {
+            return $socio;
+        }
+    }
+    return false;
 }
