@@ -116,3 +116,5 @@ if (isset($_GET['id'])) {
 
 </body>
 </html>
+
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

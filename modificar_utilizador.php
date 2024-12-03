@@ -66,3 +66,5 @@
         </div>
     </form>
 </div>
+
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

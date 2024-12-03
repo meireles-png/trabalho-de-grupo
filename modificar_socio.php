@@ -57,3 +57,5 @@ if (!validaSessao()) {
         <button type="submit" class="btn btn-primary">Modificar Sócio</button>
     </form>
 </div>
+
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
