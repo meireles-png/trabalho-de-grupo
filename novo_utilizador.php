@@ -1,6 +1,10 @@
 <?php
     include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';
 
+
+    validarNomeUtilizador();
+    validarPassword();
+
     if (!validaSessao()) {
         header('Location: login.php');
         exit;

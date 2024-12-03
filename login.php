@@ -51,5 +51,8 @@
                 </div>
             </div>
         </form>
+    <div class="mt-3 text-center">
+        <p><strong class="text-danger">Atenção:</strong> Ao fazer login, concorda que os cookies serão utilizados para manter a sua sessão iniciada.</p>
+    </div>
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
