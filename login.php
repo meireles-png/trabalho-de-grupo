@@ -52,7 +52,9 @@
             </div>
         </form>
     <div class="mt-3 text-center">
-        <p><strong class="text-danger">Atenção:</strong> Ao fazer login, concorda que os cookies serão utilizados para manter a sua sessão iniciada.</p>
+        <div style="background-color: #f0f0f0; padding: 20px; border-radius: 5px; display: inline-block; margin-top: 20px;">
+            <p><strong class="text-danger">Atenção:</strong> Ao fazer login, concorda que os cookies serão utilizados para manter a sua sessão iniciada.</p>
+        </div>
     </div>
-
+</div>
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

@@ -100,4 +100,3 @@
 <script src="https://cdn.jsdelivr.net/npm/@pop"></script>
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
-
