@@ -1,3 +1,4 @@
+<button onclick="location.href='home.php'">Voltar ao Menu</button>
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -10,16 +11,16 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 50px;
         }
         h1 {
             color: #333;
         }
         form {
             background: #fff;
-            padding: 20px;
+            padding: 50px;
             margin-bottom: 20px;
-            border-radius: 5px;
+            border-radius: 0px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         label {
@@ -136,5 +137,6 @@
     }
     ?>
 </div>
+
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

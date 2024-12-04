@@ -96,7 +96,24 @@
     </div>
 </div>
 
+
+<script>
+  function confirmarSaida()
+  {
+    if (confirm('Tem a certeza que deseja sair?')) {
+      window.location.href = 'logout.php';
+    }
+  }
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@pop"></script>
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<script>
+  function confirmarSaida()
+  {
+    if (confirm('Tem a certeza que deseja sair?')) {
+      window.location.href = 'logout.php';
+    }
+  }
+</script>
