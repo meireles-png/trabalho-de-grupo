@@ -89,15 +89,21 @@
     </form>
 
     <?php
+
     // Função para emitir cobrança
     function emitirCobranca($numero_socio, $valor, $tipo) {
         if ($tipo !== 'JOIA' && $tipo !== 'QUOTA') {
             return false;
         }
-
+    
+        // Verifica se o valor é um número
+        if (!is_numeric($valor)) {
+            return false;
+        }
+    
         $numero_cobranca = obterProximoNumeroCobranca();
         $data_emissao = date('Y-m-d H:i:s');
-
+    
         $linha_cobranca = implode(';', [
             $numero_cobranca,
             $data_emissao,
@@ -107,8 +113,19 @@
             $tipo,
             ''
         ]);
-
-        $resultado = file_put_contents('cobrancas.txt', $linha_cobranca . PHP_EOL, FILE_APPEND);
+    
+        // Tenta abrir o arquivo para escrita
+        $fcobrancas = fopen("data" . DIRECTORY_SEPARATOR . "cobrancas.txt", 'a');
+        
+        // Verifica se o arquivo foi aberto com sucesso
+        if ($fcobrancas === false) {
+            return false;
+        }
+    
+        // Escreve a linha de cobrança no arquivo
+        $resultado = fputs($fcobrancas, $linha_cobranca . "\n");
+        fclose($fcobrancas);
+        
         return $resultado !== false;
     }
 

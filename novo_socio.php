@@ -93,7 +93,7 @@
             <div class="col-4">
                 <select id="sexo" name="sexo" required>
                     <option value="MASCULINO">Masculino</option>
-                    <option value="FEMININO">Feminino</option>
+                    <option value="FEMININO">Feminino</option>  
                 </select>       
             </div>
         </div>

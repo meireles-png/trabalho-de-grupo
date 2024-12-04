@@ -155,14 +155,6 @@ function escreverUtilizadores(array $utilizadores): bool
     return true;
 }
 
-function validarNomeUtilizador($username) {
-    return preg_match('/^[a-zA-Z]+$/', $username);
-}
-
-function validarPassword($password) {
-    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/', $password);
-}
-
 function obterProximoId($ficheiro) {
     $id = 1; // Começa no 1
     if (file_exists($ficheiro)) {

@@ -64,7 +64,7 @@
 </div>
 
 <div class="container">
-    <h2>Funcionalidades Principais</h2>
+    <h2 class="mt-3">Funcionalidades Principais</h2>
     <div class="row">
         <div class="col-md-4">
             <div class="card">
@@ -107,6 +107,15 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@pop"></script>
+
+<script>
+  function confirmarSaida()
+  {
+    if (confirm('Tem a certeza que deseja sair?')) {
+      window.location.href = 'logout.php';
+    }
+  }
+</script>
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
 <script>
