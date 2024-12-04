@@ -59,6 +59,7 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Pagamento</title>
@@ -111,7 +112,7 @@ if (isset($_GET['id'])) {
         </div>
     <?php endif; ?>
 
-    <a href="cobrancas.php">Voltar à lista de cobranças</a>
+    <a href="emitir_cobranca.php">Voltar à lista de cobranças</a>
 </div>
 
 </body>
