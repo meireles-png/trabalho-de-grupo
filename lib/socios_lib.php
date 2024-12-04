@@ -7,12 +7,7 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
     }
     
     // abrir o ficheiro no directorio superior data/utilizadores
-    $fsocios = fopen(
-        "data"
-            . DIRECTORY_SEPARATOR
-            . "socios.txt",
-        "r"
-    );
+    $fsocios = fopen("data" . DIRECTORY_SEPARATOR . "socios.txt", "r");
 
     $socios = [];
     while(($linha = fgets($fsocios)) !== false) {
