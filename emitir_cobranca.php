@@ -37,7 +37,7 @@
             border-radius: 4px;
         }
         button {
-            background-color: #5cb85c;
+            background-color: #007bff;
             color: white;
             padding: 10px 15px;
             border: none;

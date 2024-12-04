@@ -90,13 +90,13 @@ if (isset($_GET['id'])) {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 15px;
-            background-color: #5cb85c;
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 4px;
         }
         a:hover {
-            background-color: #4cae4c;
+            background-color: #007bff;
         }
     </style>
 </head>
