@@ -79,7 +79,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Gerir Sócios</h5>
-                    <p class="card-text">Mantenha o registro dos sócios atualizado com facilidade.</p>
+                    <p class="card-text">Mantenha o registo dos sócios atualizado com facilidade.</p>
                     <a href="socios.php" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
