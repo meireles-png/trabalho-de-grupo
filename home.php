@@ -9,7 +9,4 @@
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
-
-lista de Sócios
-
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
