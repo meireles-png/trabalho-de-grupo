@@ -14,43 +14,6 @@ if (!validaSessao()) {
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php';
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
 
-// Função para registrar o pagamento de uma cobrança
-function registrarPagamento($id_cobranca) {
-    // Abre o arquivo de sócios para leitura
-    $linhas = fopen("data" . DIRECTORY_SEPARATOR . "socios.txt", "r");
-    $cobrancas_atualizadas = []; // Array para armazenar cobranças atualizadas
-    $cobranca_encontrada = false; // Flag para verificar se a cobrança foi encontrada
-
-    // Itera sobre cada linha do arquivo
-    foreach ($linhas as $linha) {
-        $dados = explode(';', $linha); // Divide a linha em dados
-        
-        // Verifica se o ID da cobrança corresponde ao ID fornecido
-        if ($dados[0] == $id_cobranca) {
-            $dados[4] = 'PAGO'; // Atualiza o estado da cobrança para 'PAGO'
-            $dados[6] = date('Y-m-d'); // Atualiza a data do pagamento
-            
-            // Se a cobrança for do tipo 'JOIA', atualiza o estado do sócio para 'ACTIVO'
-            if ($dados[5] == 'JOIA') {
-                atualizarEstadoSocio($dados[2], 'ACTIVO');
-            }
-            
-            $cobranca_encontrada = true; // Marca que a cobrança foi encontrada
-        }
-        
-        // Adiciona os dados atualizados ao array
-        $cobrancas_atualizadas[] = implode(';', $dados);
-    }
-
-    // Se a cobrança foi encontrada, grava as cobranças atualizadas no arquivo
-    if ($cobranca_encontrada) {
-        file_put_contents('cobrancas.txt', implode(PHP_EOL, $cobrancas_atualizadas) . PHP_EOL);
-        return true; // Retorna verdadeiro indicando sucesso
-    }
-
-    return false; // Retorna falso se a cobrança não foi encontrada
-}
-
 // Função para atualizar o estado de um sócio
 function atualizarEstadoSocio($numero_socio, $novo_estado) {
     // Lógica para atualizar estado do sócio (não implementada aqui)
@@ -79,25 +42,11 @@ function listarCobrancasPendentes() {
     return $cobrancas; // Retorna as cobranças pendentes
 }
 
-// Recebe o ID da cobrança via GET
-if (isset($_GET['id'])) {
-    $id_cobranca = $_GET['id']; // Obtém o ID da cobrança
-    
-    // Tenta registrar o pagamento da cobrança
-    if (registrarPagamento($id_cobranca)) {
-        $mensagem = "Pagamento registrado com sucesso!"; // Mensagem de sucesso
-    } else {
-        $mensagem = "Erro ao registrar pagamento."; // Mensagem de erro
-    }
-}
-
 // Lista as cobranças pendentes
 $cobrancas_pendentes = listarCobrancasPendentes();
 ?>
 
-
 <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
-    <h1 style="color : #333;">Registrar Pagamento</h1>
 
     <?php if (isset($mensagem)): ?>
         <div class="message" style="margin-bottom: 20px; padding: 10px; background-color: #e7f3fe; color: #31708f; border: 1px solid #bce8f1; border-radius: 4px;">
@@ -138,19 +87,5 @@ $cobrancas_pendentes = listarCobrancasPendentes();
         </tbody>
     </table>
 </div>
-
-<?php
-// Verifica se o formulário de registro de pagamento foi enviado
-if (isset($_POST['registrar_pagamento'])) {
-    $id_cobranca = $_POST['cobranca_id']; // Obtém o ID da cobrança do formulário
-    
-    // Tenta registrar o pagamento da cobrança
-    if (registrarPagamento($id_cobranca)) {
-        $mensagem = "Pagamento registrado com sucesso!"; // Mensagem de sucesso
-    } else {
-        $mensagem = "Erro ao registrar pagamento."; // Mensagem de erro
-    }
-}
-?>
 
 <?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

@@ -18,7 +18,7 @@ include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php';
 
 <?php 
 // Inclui o menu de navegação da página
-include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; 
+include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
 ?>
 
 <div class="container pt-5">

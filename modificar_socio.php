@@ -27,16 +27,6 @@ include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
     <!-- Formulário para modificar a ficha do sócio -->
     <form action="modificar_socio.php" method="post" class="text-center">
         <div class="form-group">
-            <label>Número de Sócio:</label>
-            <!-- Exibe o número de sócio como texto estático -->
-            <p class="form-control-static"><?php echo $numero_socio; ?></p>
-        </div>
-        <div class="form-group">
-            <label>NIF:</label>
-            <!-- Exibe o NIF como texto estático -->
-            <p class="form-control-static"><?php echo $nif; ?></p>
-        </div>
-        <div class="form-group">
             <label for="nome">Nome de Sócio:</label>
             <!-- Campo de entrada para o nome do sócio -->
             <input type="text" class="form-control" name="nome" value="<?php echo $nome; ?>" required>
