@@ -19,10 +19,12 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
 
         // Cria um array associativo para o sócio
         $socio = [
-            'id' => trim($tempSocios[0]), // ID do sócio
-            'nome' => trim($tempSocios[2]), // Nome do sócio
+            'id' => trim($tempSocios[8]), // ID do sócio
+            'nome' => trim($tempSocios[0]), // Nome do sócio
             'nif' => trim($tempSocios[1]), // NIF do sócio
-            'data_criacao' => trim($tempSocios[3]), // Data de criação do sócio
+            'morada' => trim($tempSocios[3]), // morada do socio
+            'sexo' => trim($tempSocios[7]), // codigo postal do socio 
+            'email' => trim($tempSocios[6]), // email do socio
         ];
 
         // Filtra sócios pelo nome se a pesquisa não estiver vazia
@@ -83,34 +85,16 @@ function sanitizar(string $string, bool $reverter = false): string
 }
 
 // Função para adicionar um novo sócio
-function adicionarSocio(string $nome, string $nif): array|bool
-{
-    $id = obtemProximoId(); // Obtém o próximo ID disponível
-    
-    $estado = atividadeSocio(); // Obtém o estado atual do sócio
+function adicionarSocio($nome, $nif, $email, $morada, $sexo) {
+    // Defina o caminho do arquivo onde os dados serão armazenados
+    $caminho_arquivo = "data" . DIRECTORY_SEPARATOR . "socios.txt";
 
-    // Abre o arquivo de sócios para adicionar um novo sócio
-    $fsocios = fopen("data" . DIRECTORY_SEPARATOR . "socios.txt", 'a');
-
-    // Cria um array com os dados do novo sócio
-    $socio = [
-        $id, sanitizar($nome), // Nome do sócio sanitizado
-        sanitizar($nif), // NIF do sócio sanitizado
-        $estado, // Estado do sócio
-        date('Y-m-d H:i:s'), // Data e hora atuais
-        '' // Campo adicional vazio (pode ser usado para outros dados)
-    ];
-
-    // Escreve os dados do sócio no arquivo, separando por <SEP>
-    $resultado = fputs($fsocios, implode(';', $socio) . "\n");
-    fclose($fsocios); // Fecha o arquivo após a escrita
-    
-    // Verifica se a escrita foi bem-sucedida
-    if ($resultado === false) {
-        return false; // Retorna false se houve erro na escrita
+    // Você pode adicionar lógica aqui para criar o arquivo se ele não existir
+    if (!file_exists($caminho_arquivo)) {
+        file_put_contents($caminho_arquivo, ""); // Cria o arquivo vazio
     }
 
-    return $socio; // Retorna os dados do sócio adicionado
+    return $caminho_arquivo; // Retorna o caminho do arquivo como string
 }
 
 // Função para verificar se o NIF é único
@@ -137,25 +121,4 @@ function obtemSocio(string $nome): array|bool
         }
     }
     return false; // Retorna false se o sócio não for encontrado
-}
-
-// Função para gerenciar a atividade do sócio
-function atividadeSocio() {
-    // Verifica se o estado do sócio está definido na sessão
-    if (!isset($_SESSION['estado'])) {
-        $_SESSION['estado'] = 'ATIVO'; // Define o estado como ATIVO se não estiver definido
-    }
-
-    // Verifica se a última atividade foi registrada
-    if (isset($_SESSION['ultima_atividade'])) {
-        $tempo_inativo = time() - $_SESSION['ultima_atividade']; // Calcula o tempo inativo
-
-        // Se o tempo inativo for maior que 300 segundos, muda o estado para SUSPENSO
-        if ($tempo_inativo > 300) {
-            $_SESSION['estado'] = 'SUSPENSO';
-        }
-    }
-
-    // Atualiza a última atividade para o tempo atual
-    $_SESSION['ultima_atividade'] = time();
 }

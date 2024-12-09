@@ -1,7 +1,5 @@
-1;151519855;alexandre;2024-11-27 11:08:08
-2;245397865;diviza;2024-12-09 12:55:19
-3;645879325;estolo;;2024-12-09 12:58:33;
-4;658695324;João Silva;2023-01-01
-5;654725443;Maria Oliveira;2023-01-02
-6;325624785;Carlos Pereira;2023-01-03
-7;325485675;Ana Costa;2023-01-04
+joao; 321456852; 2024-12-03; rua da cidade; 9550-458; lisboa; lol@gmail.com; FEMININO; 1
+diviza; 741258963; 1980-06-18; rua das americas; 9500-137; lisboa; diviza@gmail.com; MASCULINO; 2   
+alexandre; 546321897; 2024-12-04; rua das americas; 9500-500; Ponta delgada; 2024107293@uac.pt; MASCULINO; 3
+diviza; 962358140; 2021-03-04; rua das americas; 9500-137; Ponta delgada; jose@gmail.com; MASCULINO; 4 
+miguel; 012354687; 2024-12-04; rua das americas; 9550-458; Ponta delgada; coimbra@gmail.com; FEMININO; 5 

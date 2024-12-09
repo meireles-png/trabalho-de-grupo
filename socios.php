@@ -62,44 +62,61 @@ include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
             </a>
         </div>
     </div>
+<style>
+    /* Estilo adicional, se necessário */
+    .table-responsive {
+        margin-top: 20px;
+    }
+</style>
 
+<div class="container">
+    <h1 class="text-center">Lista de Sócios</h1>
     <div class="row">
         <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nome</th> <!-- Cabeçalho da coluna para Nome -->
-                        <th>ID</th> <!-- Cabeçalho da coluna para ID -->
-                        <th class="text-end">Ações</th> <!-- Cabeçalho da coluna para Ações -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Chama a função para ler sócios, passando os parâmetros de pesquisa e estado
-                    $socios = lerSocios($_POST['pesquisa'] ?? '', $_POST['estado'] ?? '');
-                    // Itera sobre cada sócio retornado
-                    foreach ($socios as $socio) { ?>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
                         <tr>
-                            <td><?php echo $socio['nome'];?></td> <!-- Exibe o nome do sócio -->
-                            <td><?php echo $socio['id'];?></td> <!-- Exibe o ID do sócio -->
-                            <td class="text-end">
-                                <!-- Botão para visualizar detalhes do sócio -->
-                                <a href="ver_socio.php?id=<?php echo $socio['id'];?>" class="btn btn-secondary">
-                                    <i class="fa-solid fa-info fa-fw"></i>
-                                </a>
-                                <!-- Botão para modificar os dados do sócio -->
-                                <a href="modificar_socio.php?id=<?php echo $socio['id'];?>" class="btn btn-warning">
-                                    <i class="fa-solid fa-user-pen fa-fw"></i>
-                                </a>
-                            </td>
+                            <th>Nome</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Morada</th>
+                            <th>Sexo</th>
+                            <th class="text-end">Ações</th>
                         </tr>
-                    <?php }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Chama a função para ler sócios, passando os parâmetros de pesquisa e estado
+                        $socios = lerSocios($_POST['pesquisa'] ?? '');
+                        // Itera sobre cada sócio retornado
+                        foreach ($socios as $socio) { ?>
+                            <tr>
+                                <td><?php echo $socio['nome']; ?></td>
+                                <td><?php echo $socio['id']; ?></td>
+                                <td><?php echo $socio['email']; ?></td>
+                                <td><?php echo $socio['morada']; ?></td>
+                                <td><?php echo $socio['sexo']; ?></td>
+                                <td class="text-end">
+                                    <a href="ver_socio.php?id=<?php echo $socio['id']; ?>" class="btn btn-secondary">
+                                        <i class="fas fa-info"></i>
+                                    </a>
+                                    <a href="modificar_socio.php?id=<?php echo $socio['id']; ?>" class="btn btn-warning">
+                                        <i class="fas fa-user-pen"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <?php 
 // Inclui o rodapé da página

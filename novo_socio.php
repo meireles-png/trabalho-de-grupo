@@ -11,19 +11,33 @@ if (!validaSessao()) {
 }
 
 // Verifica se o formulário foi enviado (se há dados no POST)
-if (!empty($_POST)) {
-    // Tenta adicionar um novo sócio com os dados fornecidos no formulário
-    $socio = adicionarSocio($_POST['nif'], $_POST['nome']);
-    
-    // Verifica se a adição do sócio foi bem-sucedida
-    if ($socio === false) {
-        // Se falhar, define uma mensagem de erro
-        $message = 'Não foi possivel adicionar o sócio';
-        $class = "danger"; // Classe para exibir a mensagem de erro
+// Verifica se o formulário foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Coleta os dados do formulário
+    $nome = $_POST['nome'];
+    $nif = $_POST['nif'];
+    $data_nascimento = $_POST['data_nascimento'];
+    $morada = $_POST['morada'];
+    $codigo_postal = $_POST['codigo_postal'];
+    $localidade = $_POST['localidade'];
+    $email = $_POST['email'];
+    $sexo = $_POST['sexo'];
+    $ID = obtemProximoId();
+    // Formata a string a ser escrita no arquivo
+    $linha = "$nome; $nif; $data_nascimento; $morada; $codigo_postal; $localidade; $email; $sexo; $ID \n";
+
+    // Caminho do arquivo
+    $caminho_arquivo = adicionarSocio($nome, $nif, $email, $morada, $sexo);
+
+    // Tenta abrir o arquivo para escrita
+    if (file_put_contents($caminho_arquivo, $linha, FILE_APPEND | LOCK_EX) !== false) {
+        // Mensagem de sucesso
+        $message = "Sócio adicionado com sucesso!";
+        $class = "success";
     } else {
-        // Se for bem-sucedido, define uma mensagem de sucesso
-        $message = "Sócio adicionado com sucesso";
-        $class = "success"; // Classe para exibir a mensagem de sucesso
+        // Mensagem de erro
+        $message = "Erro ao adicionar sócio. Tente novamente.";
+        $class = "danger";
     }
 }
 ?>
