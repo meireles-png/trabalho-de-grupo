@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
     // Inclui as bibliotecas necessárias para a validação de sessão e manipulação de sócios
     include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';

@@ -81,7 +81,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Gerir Utilizadores</h5> <!-- Título do cartão -->
                     <p class="card-text">Adicione, edite ou remova utilizadores do sistema de forma simples e rápida.</p> <!-- Descrição do cartão -->
-                    <a href="utilizadores.php" class="btn btn-primary">Acessar</ a> <!-- Botão para acessar a página de utilizadores -->
+                    <a href="utilizadores.php" class="btn btn-primary">Acessar</a> <!-- Botão para acessar a página de utilizadores -->
                 </div>
             </div>
         </div>
