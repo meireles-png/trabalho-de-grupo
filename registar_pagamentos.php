@@ -153,4 +153,4 @@ if (isset($_POST['registrar_pagamento'])) {
 }
 ?>
 
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?> Claro! Aqui está uma explicação comentada do código PHP fornecido, que implementa uma página para registrar pagamentos de cobranças pendentes:
+<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
