@@ -14,11 +14,6 @@ if (!validaSessao()) {
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php';
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
 
-// Função para atualizar o estado de um sócio
-function atualizarEstadoSocio($numero_socio, $novo_estado) {
-    // Lógica para atualizar estado do sócio (não implementada aqui)
-}
-
 // Função para listar cobranças pendentes
 function listarCobrancasPendentes() {
     $cobrancas = []; // Array para armazenar cobranças pendentes
@@ -29,7 +24,7 @@ function listarCobrancasPendentes() {
         while (($line = fgets($file)) !== false) {
             $data = explode(';', trim($line)); // Divide a linha em dados
             // Verifica se a linha contém 7 campos e se o estado é 'PENDENTE'
-            if (count($data) === 7 && $data[4] === 'PENDENTE') {
+            if (count($data) === 6 && trim($data[3]) === 'PENDENTE') {
                 $cobrancas[] = $data; // Adiciona a cobrança ao array
             }
         }
@@ -47,39 +42,53 @@ $cobrancas_pendentes = listarCobrancasPendentes();
 ?>
 
 <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+    <!-- Cria um contêiner centralizado com largura máxima de 800px, margem automática e padding de 20px, usando a fonte Arial. -->
 
     <?php if (isset($mensagem)): ?>
+        <!-- Verifica se a variável $mensagem está definida. -->
         <div class="message" style="margin-bottom: 20px; padding: 10px; background-color: #e7f3fe; color: #31708f; border: 1px solid #bce8f1; border-radius: 4px;">
+            <!-- Cria uma caixa de mensagem com estilo, incluindo margem, padding, cor de fundo, cor do texto, borda e borda arredondada. -->
             <?php echo $mensagem; ?>
+            <!-- Exibe a mensagem se estiver definida. -->
         </div>
     <?php endif; ?>
 
     <h2 style="color: #333;">Cobranças Pendentes por Membro</h2>
+    <!-- Título da seção, estilizado com uma cor escura. -->
+    
     <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <!-- Cria uma tabela que ocupa 100% da largura disponível, com colapsamento de bordas e margem superior de 20px. -->
         <thead>
             <tr>
-                <th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; color: #333;">Número do Sócio</th>
+                <!-- Início do cabeçalho da tabela. -->
                 <th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; color: #333;">Nome</th>
+                <!-- Cabeçalho da coluna "Nome", com borda, padding, cor de fundo e cor do texto. -->
                 <th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; color: #333;">Valor</th>
+                <!-- Cabeçalho da coluna "Valor", com estilo semelhante ao anterior. -->
                 <th style="border: 1px solid #ddd; padding: 12px; background-color: #f2f2f2; color: #333;">Ação</th>
+                <!-- Cabeçalho da coluna "Ação", com estilo semelhante ao anterior. -->
             </tr>
         </thead>
         <tbody>
+            <!-- Início do corpo da tabela. -->
             <?php
-            $cobrancas_pendentes = listarCobrancasPendentes(); // Lista as cobranças pendentes
-
             if (empty($cobrancas_pendentes)): ?>
-                <tr>
+                <!-- Verifica se a lista de cobranças pendentes está vazia. -->
+                <tr> 
                     <td colspan="4" style="text-align: center; font-style: italic; color: #888;">Nenhuma cobrança pendente encontrada.</td>
+                    <!-- Se estiver vazia, exibe uma mensagem centralizada em itálico e com cor cinza. -->
                 </tr>
             <?php else:
+                // Se houver cobranças pendentes, itera sobre cada uma delas.
                 foreach ($cobrancas_pendentes as $cobranca): ?>
                     <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;"><?php echo $cobranca[2]; ?></td> <!-- Número do Sócio -->
-                        <td style="border: 1px solid #ddd; padding: 12px;"><?php echo $cobranca[3]; ?></td> <!-- Nome do Sócio -->
-                        <td style="border: 1px solid #ddd; padding: 12px;"><?php echo number_format($cobranca[1], 2, ',', '.'); ?>€</td> <!-- Valor da Cobrança -->
+                        <!-- Início de uma nova linha para cada cobrança pendente. -->
+                        <td style="border: 1px solid #ddd; padding: 12px;"><?php echo htmlspecialchars($cobranca[2]); ?></td>
+                        <!-- Exibe o nome do sócio, escapando caracteres especiais para evitar XSS. -->
+                        <td style="border: 1px solid #ddd; padding: 12px;"><?php echo number_format($cobranca[1], 2, ',', '.'); ?>€</td>
+                        <!-- Exibe o valor da cobrança formatado como moeda, com duas casas decimais e símbolo de euro. -->
                         <td style="border: 1px solid #ddd; padding: 12px;">
-                            <a href="registar_pagamentos.php?id=<?php echo $cobranca[0]; ?>" style="display: inline-block; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;">Registrar Pagamento</a>
+                            <a href="registar_pagamentos.php?id=<?php echo htmlspecialchars($cobranca[0]); ?>" style="display: inline-block; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;">Registrar Pagamento</a>
                         </td>
                     </tr>
                 <?php endforeach; 
@@ -88,4 +97,6 @@ $cobrancas_pendentes = listarCobrancasPendentes();
     </table>
 </div>
 
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<?php 
+    include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php';
+?>
