@@ -15,7 +15,7 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
     // Lê o arquivo linha por linha
     while (($linha = fgets($fsocios)) !== false) {
         // Divide a linha em partes usando o delimitador "<SEP>"
-        $tempSocios = explode("<SEP>", $linha);
+        $tempSocios = explode(";", $linha);
 
         // Cria um array associativo para o sócio
         $socio = [
@@ -23,7 +23,6 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
             'nome' => trim($tempSocios[2]), // Nome do sócio
             'nif' => trim($tempSocios[1]), // NIF do sócio
             'data_criacao' => trim($tempSocios[3]), // Data de criação do sócio
-            'estado' => trim($tempSocios[4]), // Estado do sócio
         ];
 
         // Filtra sócios pelo nome se a pesquisa não estiver vazia
@@ -84,7 +83,7 @@ function sanitizar(string $string, bool $reverter = false): string
 }
 
 // Função para adicionar um novo sócio
-function adicionarSocio(string $nome, string $nif, string $estado): array|bool
+function adicionarSocio(string $nome, string $nif): array|bool
 {
     $id = obtemProximoId(); // Obtém o próximo ID disponível
     
@@ -103,7 +102,7 @@ function adicionarSocio(string $nome, string $nif, string $estado): array|bool
     ];
 
     // Escreve os dados do sócio no arquivo, separando por <SEP>
-    $resultado = fputs($fsocios, implode('<SEP>', $socio) . "\n");
+    $resultado = fputs($fsocios, implode(';', $socio) . "\n");
     fclose($fsocios); // Fecha o arquivo após a escrita
     
     // Verifica se a escrita foi bem-sucedida

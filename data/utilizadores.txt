@@ -6,3 +6,4 @@ luis,$2y$10$OW8Em5P3r3YQmq9XOiE0nOsYeQHLBTjwrEDP.//sZPchZVdHkmzYq,luis amaral
 jorge,$2y$10$JnScoPak5CGTxEUKE8iGeuEyUgjmFIwU8VhAFJRpUAhUlsUm4iZIy,jorge jesus
 luisa,$2y$10$3YaaOBg1.uyM1uhYqY5gfe/bytF8dbrlXvP/xhOEAHcNiJLKi77lG,taipas
 ginasio,$2y$10$VlS.vpFVzBMvx5tWj51BP.SYdCynUUXA4oMNJ3tvirXCK5qGM8QKy,manel
+Rosa,$2y$10$Kvb3RYPBWVRYgK9618oCQ.GM6lRIEC6wqJk2nvhu3YPJPAPb5PY3m,Rosa maria

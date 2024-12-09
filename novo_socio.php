@@ -13,7 +13,7 @@ if (!validaSessao()) {
 // Verifica se o formulário foi enviado (se há dados no POST)
 if (!empty($_POST)) {
     // Tenta adicionar um novo sócio com os dados fornecidos no formulário
-    $socio = adicionarSocio($_POST['nif'], $_POST['nome'], $_POST['estado']);
+    $socio = adicionarSocio($_POST['nif'], $_POST['nome']);
     
     // Verifica se a adição do sócio foi bem-sucedida
     if ($socio === false) {
@@ -96,7 +96,6 @@ include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
             </div>
         </div>
 
-        <div class="row justify-content-center ```php
         <div class="row justify-content-center mt-3">
             <label for="localidade" class="col-2 text-end fw-bold">Localidade</label>
             <div class="col-4">

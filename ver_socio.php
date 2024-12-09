@@ -16,7 +16,7 @@ if (!validaSessao()) {
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; 
 ?>
 
-<?php 
+<?php
 // Inclui o menu de navegação da página
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
 ?>
