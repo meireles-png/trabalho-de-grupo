@@ -95,6 +95,7 @@ if (isset($_GET['id'])) {
 $cobrancas_pendentes = listarCobrancasPendentes();
 ?>
 
+
 <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
     <h1 style="color : #333;">Registrar Pagamento</h1>
 
