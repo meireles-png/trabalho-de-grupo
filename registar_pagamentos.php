@@ -88,7 +88,7 @@ $cobrancas_pendentes = listarCobrancasPendentes();
                         <td style="border: 1px solid #ddd; padding: 12px;"><?php echo number_format($cobranca[1], 2, ',', '.'); ?>€</td>
                         <!-- Exibe o valor da cobrança formatado como moeda, com duas casas decimais e símbolo de euro. -->
                         <td style="border: 1px solid #ddd; padding: 12px;">
-                            <a href="registar_pagamentos.php?id=<?php echo htmlspecialchars($cobranca[0]); ?>" style="display: inline-block; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;">Registrar Pagamento</a>
+                            <a href="registar_pagamentos.php?id=<?php echo htmlspecialchars($cobranca[0]); ?>" style="display: inline-block; padding: 8px 12px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px; transition: background-color 0.3s;">Fazer Pagamento</a>
                         </td>
                     </tr>
                 <?php endforeach; 
