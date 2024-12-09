@@ -1,36 +1,53 @@
 <?php
-    include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';
+// Inclui a biblioteca de funções relacionadas a utilizadores
+include_once 'lib' . DIRECTORY_SEPARATOR . 'utilizadores_lib.php';
 
-    if (!validaSessao()) {
-        header('Location: login.php');
-        exit;
-    }
+// Verifica se a sessão do utilizador é válida
+if (!validaSessao()) {
+    // Se a sessão não for válida, redireciona o utilizador para a página de login
+    header('Location: login.php');
+    exit; // Encerra a execução do script após o redirecionamento
+}
 ?>
 
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; ?>
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; ?>
+<?php 
+// Inclui o cabeçalho da página
+include_once 'parciais' . DIRECTORY_SEPARATOR . 'header.php'; 
+?>
 
+<?php 
+// Inclui o menu de navegação da página
+include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php'; 
+?>
 
 <div class="container pt-5">
     <?php
-        $utilizador = obtemUtilizador($_GET['username']);
-        if ($utilizador === false) { ?>
-            <div class="row">
-                <div class="col">
-                    <p class="alert alert-danger">Utilizador não encontrado!!!</p>
-                </div>
+    // Obtém os dados do utilizador com base no username passado via GET
+    $utilizador = obtemUtilizador($_GET['username']);
+    
+    // Verifica se o utilizador foi encontrado
+    if ($utilizador === false) { ?>
+        <div class="row">
+            <div class="col">
+                <!-- Mensagem de erro se o utilizador não for encontrado -->
+                <p class="alert alert-danger">Utilizador não encontrado!!!</p>
             </div>
-        <?php } else { ?> 
-            <div class="card">
-                <h5 class="card-header">Dados de Utilizador</h5>
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $utilizador['nome'];?></h5>
-                    <p class="text-center">
+        </div>
+    <?php } else { ?> 
+        <div class="card">
+            <h5 class="card-header">Dados de Utilizador</h5>
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $utilizador['nome'];?></h5> <!-- Exibe o nome do utilizador -->
+                <p class="text-center">
+                    <!-- Botão para modificar os dados do utilizador -->
                     <a href="modificar_utilizador.php?username=<?php echo $utilizador['username'];?>" class="btn btn-primary">Modificar</a>
-                    </p>
-                </div>
+                </p>
             </div>
+        </div>
     <?php } ?>
 </div>
 
-<?php include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<?php 
+// Inclui o rodapé da página
+include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; 
+?>
