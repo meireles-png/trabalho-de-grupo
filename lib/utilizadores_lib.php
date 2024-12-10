@@ -176,19 +176,3 @@ function escreverUtilizadores(array $utilizadores): bool
     fclose($futilizadores); // Fecha o arquivo após a escrita
     return true; // Retorna true após a escrita
 }
-
-// Função para obter o próximo ID disponível a partir de um arquivo
-function obterProximoId($ficheiro) {
-    $id = 1; // Começa no 1
-    // Verifica se o arquivo existe
-    if (file_exists($ficheiro)) {
-        $linha = file($ficheiro); // Lê o arquivo
-        $ultimaLinha = end($linha); // Obtém a última linha do arquivo
-        // Se a última linha existir, aumenta o ID
-        if ($ultimaLinha) {
-            $partes = explode(';', $ultimaLinha); // Divide a última linha em partes
-            $id = (int)$partes[0] + 1; // Aumenta o ID
-        }
-    }
-    return $id; // Retorna o próximo ID
-}

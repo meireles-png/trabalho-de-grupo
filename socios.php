@@ -98,7 +98,7 @@ include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
                                 <td><?php echo $socio['morada']; ?></td>
                                 <td><?php echo $socio['sexo']; ?></td>
                                 <td class="text-end">
-                                    <a href="ver_socio.php?id=<?php echo $socio['id']; ?>" class="btn btn-secondary">
+                                    <a href="ver_socio.php?nome=<?php echo $socio['nome']; ?>" class="btn btn-secondary">
                                         <i class="fas fa-info"></i>
                                     </a>
                                     <a href="modificar_socio.php?id=<?php echo $socio['id']; ?>" class="btn btn-warning">

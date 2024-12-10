@@ -3,11 +3,6 @@
 // Função para ler os sócios a partir de um arquivo
 function lerSocios(string $pesquisa = '', string $estado = ''): array
 {
-    // Verifica se o arquivo de sócios existe
-    if (!file_exists("data" . DIRECTORY_SEPARATOR . "socios.txt")) {
-        return []; // Retorna um array vazio se o arquivo não existir
-    }
-    
     // Abre o arquivo de sócios para leitura
     $fsocios = fopen("data" . DIRECTORY_SEPARATOR . "socios.txt", "r");
 
@@ -26,17 +21,7 @@ function lerSocios(string $pesquisa = '', string $estado = ''): array
             'sexo' => trim($tempSocios[7]), // codigo postal do socio 
             'email' => trim($tempSocios[6]), // email do socio
         ];
-
-        // Filtra sócios pelo nome se a pesquisa não estiver vazia
-        if (!empty($pesquisa) && (strpos($socio['nome'], $pesquisa) === false)) {
-            continue; // Pula para a próxima iteração se o nome não corresponder
-        }
-
-        // Filtra sócios pelo estado se o estado não estiver vazio
-        if (!empty($estado) && $socio['estado'] != $estado) {
-            continue; // Pula para a próxima iteração se o estado não corresponder
-        }
-
+        
         $socios[] = $socio; // Adiciona o sócio ao array de sócios
     }
     fclose($fsocios); // Fecha o arquivo após a leitura
@@ -85,7 +70,8 @@ function sanitizar(string $string, bool $reverter = false): string
 }
 
 // Função para adicionar um novo sócio
-function adicionarSocio($nome, $nif, $email, $morada, $sexo) {
+function adicionarSocio($nome, $nif, $email, $morada, $sexo) 
+{
     // Defina o caminho do arquivo onde os dados serão armazenados
     $caminho_arquivo = "data" . DIRECTORY_SEPARATOR . "socios.txt";
 
@@ -116,9 +102,49 @@ function obtemSocio(string $nome): array|bool
     $socios = lerSocios(); // Lê os sócios existentes
     // Procura o sócio pelo nome
     foreach ($socios as $socio) {
-        if ($socio['nome'] === $nome) {
+        if ($socio['nome'] == $nome) {
             return $socio; // Retorna os dados do sócio se encontrado
         }
     }
     return false; // Retorna false se o sócio não for encontrado
+}
+
+function modificarSocio(string $nome, string $sexo, string $email, string $data_nascimento, string $localidade, string $morada, string $codigo_postal): bool 
+{
+    $socios = lerSocios(); // Lê os sócios existentes
+
+    // Percorre os sócios para encontrar o correspondente ao username
+    foreach ($socios as $pos => $socio) {
+        if ($socio['nome'] == $nome) { // Verifica se o username coincide
+            // Atualiza os campos do sócio
+            $socios[$pos]['nome'] = $nome;
+            $socios[$pos]['sexo'] = $sexo;
+            $socios[$pos]['email'] = $email;
+            $socios[$pos]['data_nascimento'] = $data_nascimento;
+            $socios[$pos]['localidade'] = $localidade;
+            $socios[$pos]['morada'] = $morada;
+            $socios[$pos]['codigo_postal'] = $codigo_postal;
+
+            // Escreve os sócios atualizados no arquivo
+            escreverSocios($socios);
+            return true; // Retorna true após a modificação
+        }
+    }
+
+    return false; // Retorna false se o sócio não for encontrado
+}
+
+function escreverSocios(array $socios): bool
+{
+    // Abre o arquivo de utilizadores para escrita
+    $fsocios = fopen("data" . DIRECTORY_SEPARATOR . "socios.txt", "w");
+
+    // Percorre os utilizadores e escreve os dados no arquivo
+    foreach ($socios as $socio) {
+        fputs(
+            $fsocios, $socio['nome'] . ',' . $socio['email'] . ',' . $socio['sexo'] . $socio['localidade'] . $socio['data_nascimento'] . $socio['morada'] . $socio['codigo_postal'] . "\n");
+    }
+
+    fclose($fsocios); // Fecha o arquivo após a escrita
+    return true; // Retorna true após a escrita
 }
