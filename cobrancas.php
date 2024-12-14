@@ -18,38 +18,41 @@ if (!validaSessao()) {
 <div class="container mt-3">
     <div class="row">
         <div class="col">
-            <h1>Tabela de Pagamentos</h1> 
+            <h1>Tabela de Pagamentos</h1> <!-- Título da tabela de pagamentos -->
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table"> <!-- Início da tabela -->
                 <thead>
                     <tr>
-                        <th>ID da cobrança</th>
-                        <th>Data de emissão</th>
-                        <th>ID do sócio</th>
-                        <th>Valor</th>
-                        <th>Tipo</th>
-                        <th>Ação</th>
+                        <th>ID da cobrança</th> <!-- Cabeçalho da coluna para ID da cobrança -->
+                        <th>Data de emissão</th> <!-- Cabeçalho da coluna para data de emissão -->
+                        <th>ID do sócio</th> <!-- Cabeçalho da coluna para ID do sócio -->
+                        <th>Valor</th> <!-- Cabeçalho da coluna para valor -->
+                        <th>Tipo</th> <!-- Cabeçalho da coluna para tipo de cobrança -->
+                        <th>Ação</th> <!-- Cabeçalho da coluna para ações -->
                     </tr>
                 </thead>
                 <tbody>
                 <?php
+                        // Chama a função para ler as cobranças
                         $cobrancas = lerCobrancas();
+                        // Verifica se a lista de cobranças está vazia
                         if (empty($cobrancas)) {
+                            // Se não houver cobranças, exibe uma mensagem na tabela
                             echo '<tr><td colspan="5">Nenhuma cobrança encontrada.</td></tr>';
                         } else {
                             foreach ($cobrancas as $cobranca) { ?>
                                 <tr>
-                                    <td><?php echo $cobranca['id_cobranca']; ?></td>
-                                    <td><?php echo $cobranca['data_emissao']; ?></td>
-                                    <td><?php echo $cobranca['ID']; ?></td>
-                                    <td><?php echo $cobranca['valor']; ?></td>
-                                    <td><?php echo $cobranca['tipo']; ?></td>
+                                    <td><?php echo $cobranca['id_cobranca']; ?></td> <!-- Exibe o ID da cobrança -->
+                                    <td><?php echo $cobranca['data_emissao']; ?></td> <!-- Exibe a data de emissão -->
+                                    <td><?php echo $cobranca['ID']; ?></td> <!-- Exibe o ID do sócio -->
+                                    <td><?php echo $cobranca['valor']; ?></td> <!-- Exibe o valor da cobrança -->
+                                    <td><?php echo $cobranca['tipo']; ?></td> <!-- Exibe o tipo de cobrança -->
                                     <td>
-                                        <button >Pagar</button>
+                                        <button >Pagar</button> <!-- Botão para realizar a ação de pagamento -->
                                     </td>
                                 </tr>
                             <?php }
@@ -62,5 +65,5 @@ if (!validaSessao()) {
 </div>
 
 <?php 
-    include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php';
+    include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; // Inclui o rodapé da página
 ?>

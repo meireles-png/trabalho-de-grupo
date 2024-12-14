@@ -125,21 +125,21 @@
         <div class="row justify-content-text-center mt-3">
             <label for="" clas="col-2 text-end fw-bold">ID</label>
             <div class="col-4">
-                <input type="text" name="ID" id="" required>
+                <input type="text" name="ID" id="" required> <!-- Campo para inserir o ID -->
             </div>
         </div>
 
         <div class="row justify-content-text-center mt-3">
             <label for="" clas="col-2 text-end fw-bold">Valor</label>
             <div class="col-4">
-                <input type="text" name="valor" id="" required>
+                <input type="text" name="valor" id="" required> <!-- Campo para inserir o valor -->
             </div>
         </div>
 
         <div class="row justify-content-text-center mt-3">
             <label for="tipo" clas="col-2 text-end fw-bold">Tipo de cobrança</label>
             <div class="col-4">
-                <select name="tipo" id="tipo" required>
+                <select name="tipo" id="tipo" required> <!-- Seleção do tipo de cobrança -->
                     <option value="Quota">Quota</option>
                     <option value="Joia">Jóia</option>
                 </select>
@@ -148,7 +148,7 @@
 
         <div class="row justify-content-text-center mt-3">
             <div class="col">
-                <button type="submit" class="btn btn-primary">Emitir Cobrança
+                <button type="submit" class="btn btn-primary">Emitir Cobrança <!-- Botão para emitir a cobrança -->
             </div>
         </div>
 
