@@ -3,3 +3,4 @@ diviza; 741258963; 1980-06-18; rua das americas; 9500-137; lisboa; diviza@gmail.
 alexandre; 546321897; 2024-12-04; rua das americas; 9500-500; Ponta delgada; 2024107293@uac.pt; MASCULINO; 3
 diviza; 962358140; 2021-03-04; rua das americas; 9500-137; Ponta delgada; jose@gmail.com; MASCULINO; 4 
 miguel; 012354687; 2024-12-04; rua das americas; 9550-458; Ponta delgada; coimbra@gmail.com; FEMININO; 5 
+luis; 366542487; 2024-12-05; rua das americas; 9500-500; Ponta delgada; teste@gmail.com; MASCULINO; 6 
