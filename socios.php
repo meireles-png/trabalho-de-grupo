@@ -114,10 +114,14 @@ include_once 'parciais' . DIRECTORY_SEPARATOR . 'menu.php';
     </div>
 </div>
 
+<!-- inclui uma biblioteca jQuery (versión 3.5.1 slim) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- inclui uma biblioteca Popper.js (versión 2.9.2) que é necessaria para os componentes de Bootstrap que requierem posicionamento dinamico -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+<!-- inclui uma biblioteca Bootstrap (versión 4.5.2) que proporciona estilos e componentes predefinidos para o desenvolvimento web -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <?php 
 // Inclui o rodapé da página
 include_once 'parciais' . DIRECTORY_SEPARATOR . 'footer.php'; 
