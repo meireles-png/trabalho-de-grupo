@@ -10,7 +10,6 @@ if (!validaSessao()) {
     exit; // Encerra a execução do script após o redirecionamento
 }
 
-// Verifica se o formulário foi enviado (se há dados no POST)
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Coleta os dados do formulário
